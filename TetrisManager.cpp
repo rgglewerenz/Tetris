@@ -9,9 +9,13 @@ void TetrisManager::CreatePiece(int type, int x, int y) {
 		switch (type) {
 		case 1:
 			//The plus 1 to x makes it more human understandable
-			objs.push_back(LineBlock(_size, x+1, y, _speed, _maxX, _maxY, images[0], _count, _grid));
+			_count % (_maxX) / _size;
+			objs.push_back(LineBlock(_size,x , y, _speed, _maxX, _maxY, images[0], _count, _grid));
+			cout <<  "Placement worked val = " << objs[_count].__placementWorked << endl;
 			if (objs[_count].__placementWorked == false) {
 				gameOver = true;
+				objs.erase(objs.begin() + _count);
+				_count--;
 			}
 			break;
 		}
@@ -64,4 +68,6 @@ void TetrisManager::reset() {
 		objs.erase(objs.begin() + i - 1);
 	}
 	_count = 0;
+	gameOver = false;
+	Grounded = true;
 }

@@ -11,6 +11,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	cout << "Testing bool = "  << test.gameOverBool() << endl;
 	if (test.gameOverBool()) {
 		cout << "Game Over " << endl;
 		gameOver();
@@ -19,9 +20,7 @@ void ofApp::update(){
 	if (time % 10 == 0) {
 		test.update();
 		test.CreatePiece(1, 0, 0);
-		test.move(false);
 		grid.printGridT();
-		//grid.printGridT();
 	}
 	time++;
 }

@@ -15,6 +15,7 @@ public:
 	void resetGrid();
 	int getItem(int x, int y);
 	void placeItem(int x, int y, int val);
+	bool checkRow(int row);
 private:
 	vector<vector<int>> gridObj;
 	int __x;
