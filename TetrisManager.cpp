@@ -8,9 +8,7 @@ void TetrisManager::CreatePiece(int type, int x, int y) {
 		Grounded = false;
 		switch (type) {
 		case 1:
-			//The plus 1 to x makes it more human understandable
-			_count % (_maxX) / _size;
-			objs.push_back(LineBlock(_size,x , y, _speed, _maxX, _maxY, images[0], _count, _grid));
+			objs.push_back(LineBlock(_size, _count % (_maxX/_size), y, _speed, _maxX, _maxY, images[0], _count, _grid));
 			cout <<  "Placement worked val = " << objs[_count].__placementWorked << endl;
 			if (objs[_count].__placementWorked == false) {
 				gameOver = true;
@@ -70,4 +68,23 @@ void TetrisManager::reset() {
 	_count = 0;
 	gameOver = false;
 	Grounded = true;
+}
+void TetrisManager::eraseRow(int row) {
+	vector<vector<int>> remove;
+	for (int i = 0; i < _maxX/_size; i++) {
+		vector<int> temp;
+		temp.push_back(_grid->getItem(i,row));
+		temp.push_back(_grid->getId(i, row));
+		remove.push_back(temp);
+	}
+	for (Tetrimino& i : objs) {
+		for (int m = 0; m < remove.size();m++) {
+			if (i.__index == remove[m][0]) {
+				cout << "in remove";
+				i.removeBlock(remove[m][1]);
+				remove.erase(remove.begin() + m);
+				m--;
+			}
+		}
+	}
 }

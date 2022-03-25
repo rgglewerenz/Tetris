@@ -17,8 +17,15 @@ void ofApp::update(){
 		gameOver();
 		return;
 	}
-	if (time % 10 == 0) {
-		test.update();
+	test.update();
+	if (time % 1 == 0) {
+		for (int i = 0; i < ScreenY / size; i++) {
+			bool testVar = grid.checkRow(i);
+			cout << "Testing row  " << i << " Results are = " << testVar << endl;
+			if (testVar == true && test.Grounded == true) {
+				test.eraseRow(i);
+			}
+		}
 		test.CreatePiece(1, 0, 0);
 		grid.printGridT();
 	}
@@ -30,6 +37,7 @@ void ofApp::gameOver() {
 	test.reset();
 	grid.resetGrid();
 }
+//--------------------------------------------------------------
 void ofApp::drawGameOver() {
 
 }
@@ -42,7 +50,6 @@ void ofApp::draw(){
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
 }
 
 //--------------------------------------------------------------

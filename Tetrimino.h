@@ -25,8 +25,9 @@ public:
 	void move(bool direction);
 	bool checkOverlap(GridT* grid);
 	Block getBlock(int index);
-	Block Blocks[4];
+	vector<Block> Blocks;
 	void drawBlocks();
+	void removeBlock(int id);
 	ofImage* image__;
 	double __speed;
 	int __size;

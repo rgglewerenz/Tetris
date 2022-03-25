@@ -23,6 +23,8 @@ public:
 	void move(bool direction);
 	bool gameOverBool();
 	void reset();
+	void eraseRow(int row);
+	bool Grounded = true;
 private:
 	int _size;
 	int _speed;
@@ -31,7 +33,6 @@ private:
 	vector<Tetrimino> objs;
 	vector<ofImage*> images;
 	int _count;
-	bool Grounded = true;
 	bool gameOver = false;
 	GridT* _grid;
 

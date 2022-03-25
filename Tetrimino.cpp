@@ -20,18 +20,18 @@ void Tetrimino::update() {
 			worked = false;
 		}
 		for (Block i : Blocks) {
-			grid->placeItem((i.getX() + __x) / __size, (i.getY() + py) / __size, -1);
+			grid->placeItem((i.getX() + __x) / __size, (i.getY() + py) / __size, -1,-1);
 		}
 		if (!worked) {
 			moveUp();
 			__live = false;
 			for (Block i : Blocks) {
-				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index);
+				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index,i.__id__);
 			}
 		}
 		else {
 			for (Block i : Blocks) {
-				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index);
+				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index,i.__id__);
 			}
 		}
 	}
@@ -83,13 +83,13 @@ void Tetrimino::move(bool direction) {
 	}
 	if (direction) {
 		for (Block i : Blocks) {
-			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, -1);
+			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, -1,-1);
 		}
 		__x += __speed * __size;
 	}
 	else {
 		for (Block i : Blocks) {
-			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, -1);
+			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, -1,-1);
 		}
 		__x -= __speed * __size;
 		cout << "New X value added = " << __x << endl;
@@ -99,7 +99,7 @@ void Tetrimino::move(bool direction) {
 	}
 	if (worked) {
 		for (Block i : Blocks) {
-			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index);
+			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index,i.__id__);
 		}
 	}
 	else
@@ -110,5 +110,19 @@ void Tetrimino::move(bool direction) {
 		else {
 			__x += __speed * __size;
 		}
+	}
+}
+void Tetrimino::removeBlock(int id) {
+	if (id > 3) {
+		cout << "INVALID ID  = " << id << endl;
+		return;
+	}
+	int b = 0;
+	for (Block m : Blocks) {
+		if (m.__id__ == id) {
+			Blocks.erase(Blocks.begin() + b);
+			grid->placeItem((m.getX() + __x)/__size,(m.getY() + __y)/__size,-1,-1);
+		}
+		b++;
 	}
 }
