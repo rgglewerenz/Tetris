@@ -8,7 +8,7 @@ void TetrisManager::CreatePiece(int type, int x, int y) {
 		Grounded = false;
 		switch (type) {
 		case 1:
-			objs.push_back(LineBlock(_size, _count % (_maxX/_size), y, _speed, _maxX, _maxY, images[0], _count, _grid));
+			objs.push_back(LineBlock(_size, x, y, _speed, _maxX, _maxY, images[0], _count, _grid,_num/16));
 			cout <<  "Placement worked val = " << objs[_count].__placementWorked << endl;
 			if (objs[_count].__placementWorked == false) {
 				gameOver = true;
@@ -84,6 +84,5 @@ void TetrisManager::eraseRow(int row) {
 				m--;
 			}
 		}
-		i.__live = true;
 	}
 }

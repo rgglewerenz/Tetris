@@ -4,7 +4,7 @@
 class Tetrimino
 {
 public:
-	void __init__(int size = 0, int x = 0, int y = 0, int speed = 0, int maxX = 0, int maxY = 0, ofImage* image = nullptr, int index = 0, GridT* grid_pt = nullptr)
+	void __init__(int size = 0, int x = 0, int y = 0, int speed = 0, int maxX = 0, int maxY = 0, ofImage* image = nullptr, int index = 0, GridT* grid_pt = nullptr, int num = 0)
 	{
 		__size = size;
 		__x = x;
@@ -15,6 +15,7 @@ public:
 		image__ = image;
 		__index = index;
 		grid = grid_pt;
+		__num__ = num;
 	}
 	void moveDown();
 	void moveUp();
@@ -39,5 +40,6 @@ public:
 	bool __live = true;
 	bool __placementWorked = true;
 	GridT* grid;
+	int __num__;
 };
 

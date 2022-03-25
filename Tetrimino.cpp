@@ -16,7 +16,7 @@ void Tetrimino::update() {
 				lowest_pt = i.getY();
 		}
 		cout << "Overlap = " << checkOverlap(grid) << endl;
-		if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - 2) {
+		if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - __num__) {
 			worked = false;
 		}
 		for (Block i : Blocks) {
@@ -32,6 +32,37 @@ void Tetrimino::update() {
 		else {
 			for (Block i : Blocks) {
 				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index,i.__id__);
+			}
+		}
+	}
+	else{
+		int py = __y;
+		moveDown();
+		bool worked = true;
+		int lowest_pt = 0;
+		for (Block i : Blocks) {
+			if (i.getY() > lowest_pt)
+				lowest_pt = i.getY();
+		}
+		cout << "Overlap = " << checkOverlap(grid) << endl;
+		if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - __num__) {
+			worked = false;
+		}
+		if (!worked) {
+			moveUp();
+			__live = false;
+			for (Block i : Blocks) {
+				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index, i.__id__);
+			}
+		}
+		else {
+			moveUp();
+			for (Block i : Blocks) {
+				grid->placeItem((i.getX() + __x) / __size, (i.getY() + py) / __size, -1, -1);
+			}
+			moveDown();
+			for (Block i : Blocks) {
+				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index, i.__id__);
 			}
 		}
 	}
@@ -93,7 +124,7 @@ void Tetrimino::move(bool direction) {
 		__x -= __speed * __size;
 		cout << "New X value added = " << __x << endl;
 	}
-	if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - 2) {
+	if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - __num__) {
 		worked = false;
 	}
 	else

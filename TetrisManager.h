@@ -6,7 +6,7 @@
 class TetrisManager
 {
 public:
-	TetrisManager(int size, int speed, int maxX, int maxY, ofImage* image = nullptr, GridT* grid = nullptr) {
+	TetrisManager(int size, int speed, int maxX, int maxY, ofImage* image = nullptr, GridT* grid = nullptr,int num = 0) {
 		_size = size;
 		_speed = speed;
 		_maxX = maxX;
@@ -14,6 +14,7 @@ public:
 		_grid = grid;
 		_count = 0;
 		images.push_back(image);
+		_num = num;
 	}
 	void __init__();
 	void CreatePiece(int type, int x, int y);
@@ -29,6 +30,7 @@ private:
 	int _size;
 	int _speed;
 	int _maxX;
+	int _num;
 	int _maxY;
 	vector<Tetrimino> objs;
 	vector<ofImage*> images;
