@@ -13,7 +13,7 @@ class ofApp : public ofBaseApp{
 		void draw();
 		int ScreenY = ofGetWindowHeight();
 		int ScreenX = ofGetWindowWidth();
-		int num = 64;
+		int num = 32;
 		int size = ScreenX/num;
 		int bar;
 		GridT grid = GridT(ScreenX/size/2,ScreenY/size);
@@ -40,6 +40,7 @@ class ofApp : public ofBaseApp{
 		int error;
 		bool aDown = false;
 		bool dDown = false;
+		bool rDown = false;
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );

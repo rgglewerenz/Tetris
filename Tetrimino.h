@@ -4,7 +4,7 @@
 class Tetrimino
 {
 public:
-	void __init__(int size = 0, int x = 0, int y = 0, int speed = 0, int maxX = 0, int maxY = 0, ofImage* image = nullptr, int index = 0, GridT* grid_pt = nullptr, int num = 0,int xL = 0, int xR = 0)
+	virtual void __init__(int size = 0, int x = 0, int y = 0, int speed = 0, int maxX = 0, int maxY = 0, ofImage* image = nullptr, int index = 0, GridT* grid_pt = nullptr, int num = 0,int xL = 0, int xR = 0)
 	{
 		__size = size;
 		__x = x;
@@ -19,21 +19,22 @@ public:
 		__xR = xR;
 		__xL = xL;
 	}
-	void moveDown();
-	void moveUp();
-	void update();
-	int getXR();
-	int getXL();
-	int getY();
-	int size();
-	void move(bool direction);
-	bool checkOverlap(GridT* grid);
-	Block getBlock(int index);
+	virtual void moveDown();
+	virtual void moveUp();
+	virtual void update();
+	virtual int getXR();
+	virtual int getXL();
+	virtual int getY();
+	virtual int size();
+	virtual void rotate(bool direction);
+	virtual void move(bool direction);
+	virtual bool checkOverlap(GridT* grid);
+	virtual Block getBlock(int index);
 	vector<Block> Blocks;
-	void drawBlocks();
-	void removeBlock(int id);
+	virtual void drawBlocks();
+	virtual void removeBlock(int id);
 	ofImage* image__;
-
+	bool __bottom = false;
 	double __speed;
 	int __size;
 	int __x;

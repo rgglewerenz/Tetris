@@ -76,6 +76,7 @@ void ofApp::update(){
 		}
 		test.CreatePiece(1, 4, 0);
 		test.update();
+		grid.printGridT();
 	}
 	time++;
 }
@@ -106,6 +107,11 @@ void ofApp::keyPressed(int key){
 		test.move(true);
 		dDown = true;
 	}
+	if (key == 'r' && rDown == false) {
+		system("pause");
+		test.rotate(true);
+		rDown = true;
+	}
 }
 
 //--------------------------------------------------------------
@@ -115,6 +121,9 @@ void ofApp::keyReleased(int key){
 	}
 	if (key == 'd' && dDown == true) {
 		dDown = false;
+	}
+	if (key == 'r' && rDown == false) {
+		rDown = false;
 	}
 }
 

@@ -5,7 +5,7 @@ void GridT::printGridT() {
 			cout << "{";
 			for(int b :i)
 				cout << b << " , ";
-			cout << "} || ";
+			cout << "},";
 		}
 		cout <<  "   |   " << endl;
 	}

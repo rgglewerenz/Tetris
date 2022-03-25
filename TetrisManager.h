@@ -27,6 +27,7 @@ public:
 	bool gameOverBool();
 	void reset();
 	void eraseRow(int row);
+	void rotate(bool direction);
 	bool Grounded = true;
 private:
 	int _size;
@@ -34,7 +35,7 @@ private:
 	int _maxX;
 	int _num;
 	int _maxY;
-	vector<Tetrimino> objs;
+	vector<Tetrimino*> objs;
 	vector<ofImage*> _images;
 	int _count;
 	bool gameOver = false;

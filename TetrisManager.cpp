@@ -8,9 +8,10 @@ void TetrisManager::CreatePiece(int type, int x, int y) {
 		Grounded = false;
 		switch (type) {
 		case 1:
-			objs.push_back(LineBlock(_size, x, y, _speed, _maxX, _maxY, _images[0], _count, _grid,_num/16));
-			cout <<  "Placement worked val = " << objs[_count].__placementWorked << endl;
-			if (objs[_count].__placementWorked == false) {
+			LineBlock * __pt = new LineBlock(_size, x, y, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			objs.push_back(__pt);
+			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
+			if (objs[_count]->__placementWorked == false) {
 				gameOver = true;
 				objs.erase(objs.begin() + _count);
 				_count--;
@@ -22,20 +23,20 @@ void TetrisManager::CreatePiece(int type, int x, int y) {
 }
 void TetrisManager::update() {
 	cout << Grounded << endl;
-	for (Tetrimino& i : objs) {
-		i.update();
+	for (Tetrimino* i : objs) {
+		i->update();
 	}
 	if(_count > 0)
 		checkGrounded();
 	
 }
 void TetrisManager::draw() {
-	for (Tetrimino i : objs) {
-		i.drawBlocks();
+	for (int i = 0; i < _count; i++) {
+		objs[i]->drawBlocks();
 	}
 }
 void TetrisManager::checkGrounded() {
-	if (objs[_count - 1].__live == false) {
+	if (objs[_count - 1]->__live == false) {
 		Grounded = true;
 	}
 }
@@ -43,20 +44,23 @@ void TetrisManager::move(bool direction) {
 	cout << _count;
 	if (_count == 0)
 		return ;
-	if (objs[_count - 1].getXL()/_size != _maxX/_size - 1 && direction == true) {
+	if (objs[_count - 1]->getXL()/_size != _maxX/_size - 1 && direction == true) {
 		if (direction == true) {
 			cout << "Moved left" << endl;
-			objs[_count - 1].move(direction);
+			objs[_count - 1]->move(direction);
 		}
 		cout << "Failed to move left" << endl;
 	}
-	if(objs[_count - 1].getXR()/_size != 0 && direction == false) {
+	if(objs[_count - 1]->getXR()/_size != 0 && direction == false) {
 		if (direction == false) {
 			cout << "Moved right" << endl;
-			objs[_count - 1].move(direction);
+			objs[_count - 1]->move(direction);
 		}
 		cout << "Failed to move right" << endl;
 	}
+}
+void TetrisManager::rotate(bool direction) {
+	objs[_count - 1]->rotate(direction);
 }
 bool TetrisManager::gameOverBool() {
 	return gameOver;
@@ -79,11 +83,11 @@ void TetrisManager::eraseRow(int row) {
 		temp.push_back(_grid->getId(i, row));
 		remove.push_back(temp);
 	}
-	for (Tetrimino& i : objs) {
+	for (Tetrimino* i : objs) {
 		for (int m = 0; m < remove.size();m++) {
-			if (i.__index == remove[m][0]) {
+			if (i->__index == remove[m][0]) {
 				cout << "in remove";
-				i.removeBlock(remove[m][1]);
+				i->removeBlock(remove[m][1]);
 				remove.erase(remove.begin() + m);
 				m--;
 			}
