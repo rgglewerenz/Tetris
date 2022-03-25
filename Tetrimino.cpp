@@ -16,7 +16,7 @@ void Tetrimino::update() {
 				lowest_pt = i.getY();
 		}
 		cout << "Overlap = " << checkOverlap(grid) << endl;
-		if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - 4) {
+		if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - 2) {
 			worked = false;
 		}
 		for (Block i : Blocks) {
@@ -51,6 +51,7 @@ Block Tetrimino::getBlock(int index) {
 		return Blocks[index];
 }
 int Tetrimino::getX() {
+	cout <<  "X from get X = " << __x << endl;
 	return __x;
 }
 int Tetrimino::getY() {
@@ -67,6 +68,9 @@ int Tetrimino::size() {
 }
 void Tetrimino::drawBlocks() {
 	for (Block i : Blocks) {
+		//i.getX() and i.getY() is the blocks relative position to other blocks
+		//__x and __y are the positions in the grid
+		//and (__maxX*__size/2) is the ofset of the gameboard
 		image__->draw(i.getX() + __x + (__maxX*__size/2), i.getY() + __y);
 	}
 }
@@ -88,6 +92,7 @@ void Tetrimino::move(bool direction) {
 			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, -1);
 		}
 		__x -= __speed * __size;
+		cout << "New X value added = " << __x << endl;
 	}
 	if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - 4) {
 		worked = false;

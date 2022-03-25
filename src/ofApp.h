@@ -11,7 +11,7 @@ class ofApp : public ofBaseApp{
 		void draw();
 		int ScreenY = ofGetWindowHeight();
 		int ScreenX = ofGetWindowWidth();
-		int size = ScreenX/64;
+		int size = ScreenX/32;
 		int bar;
 		GridT grid = GridT(ScreenX/size/2,ScreenY/size);
 		int time = 0;
@@ -33,5 +33,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		void gameOver();
+		void drawGameOver();
 		
 };

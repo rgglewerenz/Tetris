@@ -11,13 +11,28 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	if (test.gameOverBool()) {
+		cout << "Game Over " << endl;
+		gameOver();
+		return;
+	}
 	if (time % 10 == 0) {
 		test.update();
 		test.CreatePiece(1, 0, 0);
-		test.move(true);
+		test.move(false);
+		grid.printGridT();
 		//grid.printGridT();
 	}
 	time++;
+}
+//--------------------------------------------------------------
+void ofApp::gameOver() {
+	drawGameOver();
+	test.reset();
+	grid.resetGrid();
+}
+void ofApp::drawGameOver() {
+
 }
 //--------------------------------------------------------------
 void ofApp::draw(){

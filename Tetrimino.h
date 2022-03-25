@@ -36,6 +36,7 @@ public:
 	int __maxY;
 	int __index;
 	bool __live = true;
+	bool __placementWorked = true;
 	GridT* grid;
 };
 

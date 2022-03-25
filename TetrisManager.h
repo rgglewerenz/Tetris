@@ -21,6 +21,8 @@ public:
 	void draw();
 	void checkGrounded();
 	void move(bool direction);
+	bool gameOverBool();
+	void reset();
 private:
 	int _size;
 	int _speed;
@@ -30,6 +32,7 @@ private:
 	vector<ofImage*> images;
 	int _count;
 	bool Grounded = true;
+	bool gameOver = false;
 	GridT* _grid;
 
 };

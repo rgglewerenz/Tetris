@@ -8,7 +8,11 @@ void TetrisManager::CreatePiece(int type, int x, int y) {
 		Grounded = false;
 		switch (type) {
 		case 1:
-			objs.push_back(LineBlock(_size, x, y, _speed, _maxX, _maxY, images[0], _count, _grid));
+			//The plus 1 to x makes it more human understandable
+			objs.push_back(LineBlock(_size, x+1, y, _speed, _maxX, _maxY, images[0], _count, _grid));
+			if (objs[_count].__placementWorked == false) {
+				gameOver = true;
+			}
 			break;
 		}
 		_count++;
@@ -44,9 +48,20 @@ void TetrisManager::move(bool direction) {
 			objs[_count - 1].move(direction);
 		}
 	}
-	if(objs[_count - 1].getX() != 0 && direction == false) {
+	if(objs[_count - 1].getX()/_size != 0 && direction == false) {
 		if (direction == false) {
 			objs[_count - 1].move(direction);
 		}
 	}
+}
+bool TetrisManager::gameOverBool() {
+	return gameOver;
+}
+void TetrisManager::reset() {
+	cout << _count;
+	for (int i = _count; i > 0; i--) {
+		cout << " i = " << i << endl;
+		objs.erase(objs.begin() + i - 1);
+	}
+	_count = 0;
 }
