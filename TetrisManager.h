@@ -19,7 +19,7 @@ public:
 		_num = num;
 	}
 	void __init__();
-	void CreatePiece(int type, int x, int y);
+	void CreatePiece(int type);
 	void update();
 	void draw();
 	void checkGrounded();

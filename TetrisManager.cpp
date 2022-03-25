@@ -3,12 +3,20 @@
 void TetrisManager::__init__() {
 	_count = 0;
 }
-void TetrisManager::CreatePiece(int type, int x, int y) {
+void TetrisManager::CreatePiece(int type) {
 	if (Grounded == true) {
 		Grounded = false;
 		switch (type) {
 		case 1:
-			LineBlock * __pt = new LineBlock(_size, x, y, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			cout <<  "Count = " << _count << endl;
+			LineBlock * __pt = nullptr;
+			if (_count != 0) {
+				__pt = new LineBlock(_size, objs[_count-1]->__x/_size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			else
+			{
+				__pt = new LineBlock(_size, _maxX/_size/2 , 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
 			objs.push_back(__pt);
 			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
 			if (objs[_count]->__placementWorked == false) {
@@ -48,15 +56,18 @@ void TetrisManager::move(bool direction) {
 		return;
 	if (_count == 0)
 		return ;
-	if (objs[_count - 1]->getXL()/_size != _maxX/_size - 1 && direction == true) {
-		if (direction == true) {
+	cout << "RX = " << objs[_count - 1]->getXR() / _size << endl;
+	cout << "LX = " << objs[_count - 1]->getXL() / _size << endl;
+	cout << "Max X = " << _maxX / _size - 1 << endl;
+	if (objs[_count - 1]->getXL()/_size != 0 && direction == false) {
+		if (direction == false) {
 			cout << "Moved left" << endl;
 			objs[_count - 1]->move(direction);
 		}
 		cout << "Failed to move left" << endl;
 	}
-	if(objs[_count - 1]->getXR()/_size != 0 && direction == false) {
-		if (direction == false) {
+	if(objs[_count - 1]->getXR()/_size != _maxX / _size - 1 && direction == true) {
+		if (direction == true) {
 			cout << "Moved right" << endl;
 			objs[_count - 1]->move(direction);
 		}
@@ -81,6 +92,7 @@ void TetrisManager::reset() {
 }
 void TetrisManager::eraseRow(int row) {
 	vector<vector<int>> remove;
+	bool test = false;
 	for (int i = 0; i < _maxX/_size; i++) {
 		vector<int> temp;
 		temp.push_back(_grid->getItem(i,row));

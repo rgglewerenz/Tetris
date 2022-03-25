@@ -191,19 +191,17 @@ void Tetrimino::removeBlock(int id) {
 	if (newY == 0)
 		return ;
 	for (Block m : Blocks) {
-		grid->placeItem((m.getX() + __x) / __size, (m.getY() + __y) / __size, __index, m.__id__);
+		grid->placeItem((m.getX() + __x) / __size, (m.getY() + __y) / __size, -1, -1);
 	}
-	for (Block m : Blocks) {
+	for (Block& m : Blocks) {
 		if (newY != 0 && m.getY() < newY) {
+			cout << "Tetrimino = " << __index << "Block = " << m.__id__ << " :: new Y = " << m.getY() + __size << ", Old Y = " << m.getY() << endl;
 			m.setY(m.getY() + __size);
-			cout << "New Y = " << m.getY();
-			
 		}
 	}
 	for (Block m : Blocks) {
 		grid->placeItem((m.getX() + __x) / __size, (m.getY() + __y) / __size, __index, m.__id__);
 	}
-	drawBlocks();
 }
 /**/
 void Tetrimino::rotate(bool direction) {

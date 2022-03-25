@@ -34,8 +34,8 @@ bool GridT::checkRow(int row) {
 		if (gridObj[row][i] != test)
 			times++;
 	}
-	cout << " Times = " << times << endl;
-	cout << " Max = " << gridObj[row].size();
+	//cout << " Times = " << times << endl;
+	//cout << " Max = " << gridObj[row].size();
 	if (times == gridObj[row].size())
 		return true;
 	return false;

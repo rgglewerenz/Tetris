@@ -60,23 +60,23 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	cout << "Testing bool = "  << test.gameOverBool() << endl;
+	//cout << "Testing bool = "  << test.gameOverBool() << endl;
 	if (test.gameOverBool()) {
 		cout << "Game Over " << endl;
 		gameOver();
 		return;
 	}
-	if (time % 10 == 0) {
+	if (time % 100 == 0) {
 		test.update();
 		for (int i = 0; i < ScreenY / size; i++) {
 			bool testVar = grid.checkRow(i);
-			cout << "Testing row  " << i << " Results are = " << testVar << endl;
+			//cout << "Testing row  " << i << " Results are = " << testVar << endl;
 			if (testVar == true && test.Grounded == true) {
 				test.eraseRow(i);
 			}
 		}
-		test.CreatePiece(1, 6, 0);
-		grid.printGridT();
+		test.CreatePiece(1);
+		//grid.printGridT();
 	}
 	time++;
 }
@@ -107,7 +107,7 @@ void ofApp::keyPressed(int key){
 		test.move(true);
 		dDown = true;
 	}
-	if ((key == 'r' || key == 'R') ) {
+	if ((key == 'w' || key == 'W') ) {
 		test.rotate(true);
 		rDown = true;
 	}
