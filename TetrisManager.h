@@ -3,6 +3,7 @@
 #include "GridT.h"
 #include "Tetrimino.h"
 #include "LineBlock.h"
+#include "TBlock.h"
 class TetrisManager
 {
 public:
@@ -20,7 +21,7 @@ public:
 	}
 	void __init__();
 	void CreatePiece(int type);
-	void update();
+	void update(int time);
 	void draw();
 	void checkGrounded();
 	void move(bool direction);

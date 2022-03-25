@@ -4,12 +4,13 @@ void TetrisManager::__init__() {
 	_count = 0;
 }
 void TetrisManager::CreatePiece(int type) {
+	LineBlock* __pt;
+	TBlock* __ptB;
 	if (Grounded == true) {
 		Grounded = false;
 		switch (type) {
 		case 1:
 			cout <<  "Count = " << _count << endl;
-			LineBlock * __pt = nullptr;
 			if (_count != 0) {
 				__pt = new LineBlock(_size, objs[_count-1]->__x/_size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
 			}
@@ -25,14 +26,30 @@ void TetrisManager::CreatePiece(int type) {
 				_count--;
 			}
 			break;
+		case 2:
+			cout << "Count = " << _count << endl;
+			if (_count != 0) {
+				__ptB = new TBlock(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			else
+			{
+				__ptB = new TBlock(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			objs.push_back(__ptB);
+			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
+			if (objs[_count]->__placementWorked == false) {
+				gameOver = true;
+				objs.erase(objs.begin() + _count);
+				_count--;
+			}
 		}
 		_count++;
 	}
 }
-void TetrisManager::update() {
+void TetrisManager::update(int time) {
 	cout << Grounded << endl;
 	for (Tetrimino* i : objs) {
-		i->update();
+		i->update(time);
 	}
 	if(_count > 0)
 		checkGrounded();
@@ -112,7 +129,7 @@ void TetrisManager::eraseRow(int row) {
 	for (Tetrimino* i : objs) {
 		i->__live = true;
 		while (i->__live == true) {
-			i->update();
+			i->update(0);
 		}
 	}
 }
@@ -121,7 +138,7 @@ void TetrisManager::hardDrop() {
 	if (_count == 0)
 		return;
 	while (objs[_count - 1]->__live) {
-		objs[_count - 1]->update();
+		objs[_count - 1]->update(0);
 	}
 	__hardDrop = false;
 }

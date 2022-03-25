@@ -42,6 +42,9 @@ class ofApp : public ofBaseApp{
 		bool dDown = false;
 		bool rDown = false;
 		bool sDown = false;
+		bool sound = true;
+		int timesWon = 0;
+		int timesDropped = 0;
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );

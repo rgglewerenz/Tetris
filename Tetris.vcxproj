@@ -186,6 +186,7 @@
     <ClCompile Include="LineBlock.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="TBlock.cpp" />
     <ClCompile Include="tetremino.cpp" />
     <ClCompile Include="Tetrimino.cpp" />
     <ClCompile Include="TetrisManager.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="GridT.h" />
     <ClInclude Include="LineBlock.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="TBlock.h" />
     <ClInclude Include="Tetrimino.h" />
     <ClInclude Include="TetrisManager.h" />
   </ItemGroup>

@@ -55,29 +55,41 @@ void ofApp::setup(){
 		i++;
 	}
 	wstring item = L"play " + names[0] + L" repeat";
-	//mciSendStringW(item.c_str(), NULL, 0, NULL);
+	if(sound)
+		mciSendStringW(item.c_str(), NULL, 0, NULL);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	bool noise = false;
 	//cout << "Testing bool = "  << test.gameOverBool() << endl;
 	if (test.gameOverBool()) {
 		cout << "Game Over " << endl;
 		gameOver();
 		return;
 	}
-	if (time % 100 == 0) {
-		test.update();
-		for (int i = 0; i < ScreenY / size; i++) {
-			bool testVar = grid.checkRow(i);
-			//cout << "Testing row  " << i << " Results are = " << testVar << endl;
-			if (testVar == true && test.Grounded == true) {
-				test.eraseRow(i);
-			}
+	test.update(time);
+	for (int i = 0; i < ScreenY / size; i++) {
+		bool testVar = grid.checkRow(i);
+		//cout << "Testing row  " << i << " Results are = " << testVar << endl;
+		if (testVar == true && test.Grounded == true) {
+			noise = true;
+			test.eraseRow(i);
 		}
-		test.CreatePiece(1);
-		//grid.printGridT();
 	}
+	if (noise && sound) {
+		if (timesWon > 0) {
+				wstring item = L"play " + names[1];
+				mciSendStringW(item.c_str(), NULL, 0, NULL);
+				timesWon++;
+			}
+		else {
+				wstring item = L"play " + names[1] + L" from 0";
+				mciSendStringW(item.c_str(), NULL, 0, NULL);
+			}
+	}
+	test.CreatePiece(2);
+	//grid.printGridT();
 	time++;
 }
 //--------------------------------------------------------------
@@ -113,6 +125,18 @@ void ofApp::keyPressed(int key){
 	}
 	if ((key == 's' || key == 'S') ) {
 		test.hardDrop();
+		if (sound) {
+			if (timesDropped > 0) {
+				timesDropped++;
+				wstring item = L"play " + names[2];
+				mciSendStringW(item.c_str(), NULL, 0, NULL);
+			}
+			else
+			{
+				wstring item = L"play " + names[2] + L" from 0";
+				mciSendStringW(item.c_str(), NULL, 0, NULL);
+			}
+		}
 		sDown = true;
 	}
 }

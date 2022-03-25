@@ -22,7 +22,7 @@ public:
 	}
 	virtual void moveDown();
 	virtual void moveUp();
-	virtual void update();
+	virtual void update(int time);
 	virtual int getXR();
 	virtual int getXL();
 	virtual int getY();

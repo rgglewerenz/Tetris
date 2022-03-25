@@ -14,8 +14,10 @@ void Tetrimino::moveUp() {
 /*
 * Updates the tetrimino's position, and makes sure that the new Pos is a valid one
 */
-void Tetrimino::update() {
+void Tetrimino::update(int time) {
 	int lowest_pt = 0;
+	if (time % 120 != 0)
+		return;
 	if (__live) {
 		int py = __y;
 		moveDown();
