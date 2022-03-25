@@ -36,7 +36,6 @@ void TetrisManager::update() {
 	}
 	if(_count > 0)
 		checkGrounded();
-	
 }
 void TetrisManager::draw() {
 	for (int i = 0; i < _count; i++) {
@@ -75,7 +74,8 @@ void TetrisManager::move(bool direction) {
 	}
 }
 void TetrisManager::rotate(bool direction) {
-	objs[_count - 1]->rotate(direction);
+	if(Grounded == false)
+		objs[_count - 1]->rotate(direction);
 }
 bool TetrisManager::gameOverBool() {
 	return gameOver;
