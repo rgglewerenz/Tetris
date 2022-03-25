@@ -6,8 +6,15 @@
 void ofApp::setup(){
 	ofSetBackgroundColor(0,0,0);
 	bar = int(int(ScreenX / 4)/size);
-	YellowBlock->load("Images\\YellowTile.png");
-	YellowBlock->resize(size, size);
+	Yellow.load("Images\\YellowTile.png");
+	Blue.load("Images\\BlueTile.png");
+	Red.load("Images\\RedTile.png");
+	Green.load("Images\\GreenTile.png");
+	Orange.load("Images\\OrangeTile.png");
+	Purple.load("Images\\PurpleTile.png");
+	for (ofImage* image : images) {
+		image->resize(size, size);
+	}
 	test.__init__();
 	int i = 0;
 	for (wstring sound : SOURCES)
@@ -48,7 +55,7 @@ void ofApp::setup(){
 		i++;
 	}
 	wstring item = L"play " + names[0] + L" repeat";
-	mciSendStringW(item.c_str(), NULL, 0, NULL);
+	//mciSendStringW(item.c_str(), NULL, 0, NULL);
 }
 
 //--------------------------------------------------------------

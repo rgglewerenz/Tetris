@@ -80,9 +80,13 @@ Block Tetrimino::getBlock(int index) {
 	if (index < 4)
 		return Blocks[index];
 }
-int Tetrimino::getX() {
-	cout <<  "X from get X = " << __x << endl;
-	return __x;
+int Tetrimino::getXL() {
+	cout <<  "XL from get X = " << __xL << endl;
+	return __xL;
+}
+int Tetrimino::getXR() {
+	cout << "XR from get X = " << __xR << endl;
+	return __xR;
 }
 int Tetrimino::getY() {
 	return __y;
@@ -116,12 +120,16 @@ void Tetrimino::move(bool direction) {
 			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, -1,-1);
 		}
 		__x += __speed * __size;
+		__xL += __speed * __size;
+		__xR += __speed * __size;
 	}
 	else {
 		for (Block i : Blocks) {
 			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, -1,-1);
 		}
 		__x -= __speed * __size;
+		__xL -= __speed * __size;
+		__xR -= __speed * __size;
 		cout << "New X value added = " << __x << endl;
 	}
 	if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - __num__) {
@@ -144,9 +152,13 @@ void Tetrimino::move(bool direction) {
 	{
 		if (direction) {
 			__x -= __speed * __size;
+			__xL -= __speed * __size;
+			__xR -= __speed * __size;
 		}
 		else {
 			__x += __speed * __size;
+			__xL += __speed * __size;
+			__xR += __speed * __size;
 		}
 	}
 }

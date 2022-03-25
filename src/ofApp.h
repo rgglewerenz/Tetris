@@ -21,10 +21,13 @@ class ofApp : public ofBaseApp{
 		int bottom = int((ScreenY/size)/10);
 		double speed = 1;
 		ofImage Yellow;
-		ofImage* YellowBlock = &Yellow;
-		ofImage RedBlock;
-		ofImage BlueBlock;
-		TetrisManager test = TetrisManager(size,speed,ScreenX/2,ScreenY,YellowBlock,&grid,num);
+		ofImage Green;
+		ofImage Blue;
+		ofImage Red;
+		ofImage Orange;
+		ofImage Purple;
+		vector<ofImage*> images = {&Yellow,&Green,&Blue,&Red,&Orange,&Purple};
+		TetrisManager test = TetrisManager(size,speed,ScreenX/2,ScreenY,images,&grid,num);
 		const wstring MUSICSOURCE = L"Sound.mp3";
 		const wstring WINSOURCE = L"Win.mp3";
 		const wstring HITSOURCE = L"Hit.mp3";

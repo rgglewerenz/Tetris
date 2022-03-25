@@ -8,7 +8,7 @@ void TetrisManager::CreatePiece(int type, int x, int y) {
 		Grounded = false;
 		switch (type) {
 		case 1:
-			objs.push_back(LineBlock(_size, x, y, _speed, _maxX, _maxY, images[0], _count, _grid,_num/16));
+			objs.push_back(LineBlock(_size, x, y, _speed, _maxX, _maxY, _images[0], _count, _grid,_num/16));
 			cout <<  "Placement worked val = " << objs[_count].__placementWorked << endl;
 			if (objs[_count].__placementWorked == false) {
 				gameOver = true;
@@ -43,15 +43,19 @@ void TetrisManager::move(bool direction) {
 	cout << _count;
 	if (_count == 0)
 		return ;
-	if (objs[_count - 1].getX()/_size != _maxX/_size - 1 && direction == true) {
+	if (objs[_count - 1].getXL()/_size != _maxX/_size - 1 && direction == true) {
 		if (direction == true) {
+			cout << "Moved left" << endl;
 			objs[_count - 1].move(direction);
 		}
+		cout << "Failed to move left" << endl;
 	}
-	if(objs[_count - 1].getX()/_size != 0 && direction == false) {
+	if(objs[_count - 1].getXR()/_size != 0 && direction == false) {
 		if (direction == false) {
+			cout << "Moved right" << endl;
 			objs[_count - 1].move(direction);
 		}
+		cout << "Failed to move right" << endl;
 	}
 }
 bool TetrisManager::gameOverBool() {
