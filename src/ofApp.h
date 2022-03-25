@@ -22,6 +22,8 @@ class ofApp : public ofBaseApp{
 		ofImage RedBlock;
 		ofImage BlueBlock;
 		TetrisManager test = TetrisManager(size,speed,ScreenX/2,ScreenY,YellowBlock,&grid);
+		bool aDown = false;
+		bool dDown = false;
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );

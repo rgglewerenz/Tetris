@@ -35,7 +35,6 @@ void Tetrimino::update() {
 			}
 		}
 	}
-	cout << __live << " L " << endl;
 }
 bool Tetrimino::checkOverlap(GridT* grid) 
 {
@@ -94,8 +93,16 @@ void Tetrimino::move(bool direction) {
 		__x -= __speed * __size;
 		cout << "New X value added = " << __x << endl;
 	}
-	if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - 4) {
+	if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - 2) {
 		worked = false;
+	}
+	else
+	{
+		__y += __speed * __size;
+		if (checkOverlap(grid)) {
+			worked = false;
+		}
+		__y -= __speed * __size;
 	}
 	if (worked) {
 		for (Block i : Blocks) {

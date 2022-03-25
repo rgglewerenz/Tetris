@@ -17,8 +17,7 @@ void ofApp::update(){
 		gameOver();
 		return;
 	}
-	test.update();
-	if (time % 1 == 0) {
+	if (time % 10 == 0) {
 		for (int i = 0; i < ScreenY / size; i++) {
 			bool testVar = grid.checkRow(i);
 			cout << "Testing row  " << i << " Results are = " << testVar << endl;
@@ -27,7 +26,7 @@ void ofApp::update(){
 			}
 		}
 		test.CreatePiece(1, 0, 0);
-		grid.printGridT();
+		test.update();
 	}
 	time++;
 }
@@ -50,11 +49,24 @@ void ofApp::draw(){
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	if (key == 'a' && aDown ==false) {
+		test.move(false);
+		aDown = true;
+	}
+	if (key == 'd' && dDown == false) {
+		test.move(true);
+		dDown = true;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+	if (key == 'a' && aDown == true) {
+		aDown = false;
+	}
+	if (key == 'd' && dDown == true) {
+		dDown = false;
+	}
 }
 
 //--------------------------------------------------------------

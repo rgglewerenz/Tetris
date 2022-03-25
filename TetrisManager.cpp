@@ -43,8 +43,6 @@ void TetrisManager::move(bool direction) {
 	cout << _count;
 	if (_count == 0)
 		return ;
-	cout << "X = " << objs[_count - 1].getX()/_size << endl;
-	cout << "Max X = " << _maxX/_size << endl;
 	if (objs[_count - 1].getX()/_size != _maxX/_size - 1 && direction == true) {
 		if (direction == true) {
 			objs[_count - 1].move(direction);
@@ -86,5 +84,6 @@ void TetrisManager::eraseRow(int row) {
 				m--;
 			}
 		}
+		i.__live = true;
 	}
 }
