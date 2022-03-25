@@ -38,10 +38,14 @@ void TetrisManager::draw() {
 void TetrisManager::checkGrounded() {
 	if (objs[_count - 1]->__live == false) {
 		Grounded = true;
+		_grid->printGridT();
+		//system("pause");
 	}
 }
 void TetrisManager::move(bool direction) {
 	cout << _count;
+	if (__hardDrop)
+		return;
 	if (_count == 0)
 		return ;
 	if (objs[_count - 1]->getXL()/_size != _maxX/_size - 1 && direction == true) {
@@ -93,4 +97,19 @@ void TetrisManager::eraseRow(int row) {
 			}
 		}
 	}
+	for (Tetrimino* i : objs) {
+		i->__live = true;
+		while (i->__live == true) {
+			i->update();
+		}
+	}
+}
+void TetrisManager::hardDrop() {
+	__hardDrop = true;
+	if (_count == 0)
+		return;
+	while (objs[_count - 1]->__live) {
+		objs[_count - 1]->update();
+	}
+	__hardDrop = false;
 }

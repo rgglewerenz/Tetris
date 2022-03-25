@@ -18,6 +18,7 @@ public:
 		__num__ = num;
 		__xR = xR;
 		__xL = xL;
+		rotation = 0;
 	}
 	virtual void moveDown();
 	virtual void moveUp();
@@ -46,7 +47,9 @@ public:
 	int __index;
 	bool __live = true;
 	bool __placementWorked = true;
+	
 	GridT* grid;
 	int __num__;
+	int rotation;
 };
 

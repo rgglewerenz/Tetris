@@ -67,6 +67,7 @@ void ofApp::update(){
 		return;
 	}
 	if (time % 10 == 0) {
+		test.update();
 		for (int i = 0; i < ScreenY / size; i++) {
 			bool testVar = grid.checkRow(i);
 			cout << "Testing row  " << i << " Results are = " << testVar << endl;
@@ -74,8 +75,7 @@ void ofApp::update(){
 				test.eraseRow(i);
 			}
 		}
-		test.CreatePiece(1, 4, 0);
-		test.update();
+		test.CreatePiece(1, 6, 0);
 		grid.printGridT();
 	}
 	time++;
@@ -99,31 +99,37 @@ void ofApp::draw(){
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	if (key == 'a' && aDown ==false) {
+	if ((key == 'a' || key == 'A')) {
 		test.move(false);
 		aDown = true;
 	}
-	if (key == 'd' && dDown == false) {
+	if ((key == 'd' || key == 'D') ) {
 		test.move(true);
 		dDown = true;
 	}
-	if (key == 'r' && rDown == false) {
-		system("pause");
+	if ((key == 'r' || key == 'R') ) {
 		test.rotate(true);
 		rDown = true;
+	}
+	if ((key == 's' || key == 'S') ) {
+		test.hardDrop();
+		sDown = true;
 	}
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-	if (key == 'a' && aDown == true) {
+	if ((key == 'a' || key == 'A') && aDown == true) {
 		aDown = false;
 	}
-	if (key == 'd' && dDown == true) {
+	if ((key == 'd' || key == 'D') && dDown == true) {
 		dDown = false;
 	}
-	if (key == 'r' && rDown == false) {
+	if ((key == 'r' || key == 'R') && rDown == true) {
 		rDown = false;
+	}
+	if ((key == 's' || key == 'S') && sDown == true) {
+		sDown = false;
 	}
 }
 

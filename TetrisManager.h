@@ -27,6 +27,7 @@ public:
 	bool gameOverBool();
 	void reset();
 	void eraseRow(int row);
+	void hardDrop();
 	void rotate(bool direction);
 	bool Grounded = true;
 private:
@@ -40,6 +41,7 @@ private:
 	int _count;
 	bool gameOver = false;
 	GridT* _grid;
+	bool __hardDrop = false;
 
 };
 

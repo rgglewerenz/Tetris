@@ -15,11 +15,11 @@ void Tetrimino::moveUp() {
 * Updates the tetrimino's position, and makes sure that the new Pos is a valid one
 */
 void Tetrimino::update() {
+	int lowest_pt = 0;
 	if (__live) {
 		int py = __y;
 		moveDown();
 		bool worked = true;
-		int lowest_pt = 0;
 		for (Block i : Blocks) {
 			if (i.getY() > lowest_pt)
 				lowest_pt = i.getY();
@@ -44,43 +44,6 @@ void Tetrimino::update() {
 		else {
 			for (Block i : Blocks) {
 				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index,i.__id__);
-			}
-		}
-	}
-	else{
-		if (__bottom)
-			return;
-		int py = __y;
-		moveDown();
-		bool worked = true;
-		
-		int lowest_pt = 0;
-		for (Block i : Blocks) {
-			if (i.getY() > lowest_pt)
-				lowest_pt = i.getY();
-		}
-		cout << "Overlap = " << checkOverlap(grid) << endl;
-		if (checkOverlap(grid)){
-			worked = false;
-		}
-		if (!worked) {
-			if ((__y + lowest_pt) / __size >= __maxY - __num__) {
-				__bottom = true;
-				return ; 
-			}
-			moveUp();
-			for (Block i : Blocks) {
-				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index, i.__id__);
-			}
-		}
-		else {
-			moveUp();
-			for (Block i : Blocks) {
-				grid->placeItem((i.getX() + __x) / __size, (i.getY() + py) / __size, -1, -1);
-			}
-			moveDown();
-			for (Block i : Blocks) {
-				grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, __index, i.__id__);
 			}
 		}
 	}
@@ -154,6 +117,8 @@ void Tetrimino::drawBlocks() {
 void Tetrimino::move(bool direction) {
 	bool worked = true;
 	int lowest_pt = 0;
+	if (!__live)
+		return;
 	for (Block i : Blocks) {
 		if (i.getY() > lowest_pt)
 			lowest_pt = i.getY();
@@ -214,13 +179,31 @@ void Tetrimino::removeBlock(int id) {
 		return;
 	}
 	int b = 0;
+	int newY = 0;
 	for (Block m : Blocks) {
 		if (m.__id__ == id) {
 			Blocks.erase(Blocks.begin() + b);
 			grid->placeItem((m.getX() + __x)/__size,(m.getY() + __y)/__size,-1,-1);
+			newY = m.getY();
 		}
 		b++;
 	}
+	if (newY == 0)
+		return ;
+	for (Block m : Blocks) {
+		grid->placeItem((m.getX() + __x) / __size, (m.getY() + __y) / __size, __index, m.__id__);
+	}
+	for (Block m : Blocks) {
+		if (newY != 0 && m.getY() < newY) {
+			m.setY(m.getY() + __size);
+			cout << "New Y = " << m.getY();
+			
+		}
+	}
+	for (Block m : Blocks) {
+		grid->placeItem((m.getX() + __x) / __size, (m.getY() + __y) / __size, __index, m.__id__);
+	}
+	drawBlocks();
 }
 /**/
 void Tetrimino::rotate(bool direction) {
