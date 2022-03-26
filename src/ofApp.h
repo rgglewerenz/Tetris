@@ -42,7 +42,7 @@ class ofApp : public ofBaseApp{
 		bool dDown = false;
 		bool rDown = false;
 		bool sDown = false;
-		bool sound = true;
+		bool sound = false;
 		int timesWon = 0;
 		int timesDropped = 0;
 		void keyPressed(int key);

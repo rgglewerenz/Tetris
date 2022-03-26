@@ -19,6 +19,7 @@ public:
 			grid->placeItem((i.getX() + __x) / __size, (i.getY() + __y) / __size, index, i.__id__);
 		}
 	}
+	void placeXY(bool self);
 	virtual void rotate(bool direction);
 	void drawItem();
 };

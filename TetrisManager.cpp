@@ -82,6 +82,7 @@ void TetrisManager::move(bool direction) {
 		}
 		cout << "Failed to move left" << endl;
 	}
+
 	if(objs[_count - 1]->getXR()/_size != _maxX / _size - 1 && direction == true) {
 		if (direction == true) {
 			cout << "Moved right" << endl;
