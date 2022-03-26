@@ -7,7 +7,7 @@ void TBlock::rotate(bool directon) {
 	{
 	case 0:
 	{
-		if (__xR / __size < __maxX && __xL / __size > 1) {
+		if (__xR / __size < __maxX && __xL / __size > 0) {
 			placeXY(false);
 			__xL -= __size;
 			Blocks[3].setX(0);
@@ -65,7 +65,7 @@ void TBlock::rotate(bool directon) {
 			rotation++;
 			break;
 		}
-		else if (__xR / __size < __maxX && !(__xL / __size > 1)) {
+		else if (__xR / __size < __maxX && !(__xL / __size > 0)) {
 			placeXY(false);
 			__x += __size;
 			__xR += __size;
@@ -187,7 +187,7 @@ void TBlock::rotate(bool directon) {
 	}
 	case 1:
 	{
-		if (__xR / __size < __maxX && __xL / __size > 1) {
+		if (__xR / __size < __maxX && __xL / __size >= 0) {
 			placeXY(false);
 			__xR -= __size;
 			Blocks[0].setX(0);
@@ -241,7 +241,7 @@ void TBlock::rotate(bool directon) {
 			rotation++;
 			break;
 		}
-		else if (__xR / __size < __maxX && !(__xL / __size > 1)) {
+		else if (__xR / __size < __maxX && !(__xL / __size >= 0)) {
 			placeXY(false);
 			__x += __size;
 			__xR += __size;
@@ -361,7 +361,7 @@ void TBlock::rotate(bool directon) {
 	}
 	case 2:
 	{
-		if (__xR / __size < __maxX - 1 && __xL / __size > 1) {
+		if (__xR / __size < __maxX - 1 && __xL / __size >= 0) {
 			placeXY(false);
 			__xR += __size;
 			Blocks[0].setX(0);
@@ -418,7 +418,7 @@ void TBlock::rotate(bool directon) {
 			rotation++;
 			break;
 		}
-		else if (__xR / __size < __maxX - 1 && !(__xL / __size > 1)) {
+		else if (__xR / __size < __maxX - 1 && !(__xL / __size >= 0)) {
 			placeXY(false);
 			__x -= __size;
 			__xR -= __size;
@@ -541,7 +541,7 @@ void TBlock::rotate(bool directon) {
 	}
 	case 3:
 	{
-		if (__xR / __size < __maxX && __xL / __size > 1) {
+		if (__xR / __size < __maxX && __xL / __size >= 0) {
 			placeXY(false);
 			__xL += __size;
 			Blocks[0].setX(0);
@@ -598,7 +598,7 @@ void TBlock::rotate(bool directon) {
 			rotation++;
 			break;
 		}
-		else if (__xR / __size < __maxX && !(__xL / __size > 1)) {
+		else if (__xR / __size < __maxX && !(__xL / __size >= 0)) {
 			placeXY(false);
 			__x += __size;
 			__xR += __size;
