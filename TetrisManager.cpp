@@ -72,6 +72,9 @@ void TetrisManager::move(bool direction) {
 		return;
 	if (_count == 0)
 		return ;
+	if (objs[_count - 1]->__live == false) {
+		return;
+	}
 	cout << "RX = " << objs[_count - 1]->getXR() / _size << endl;
 	cout << "LX = " << objs[_count - 1]->getXL() / _size << endl;
 	cout << "Max X = " << _maxX / _size - 1 << endl;
@@ -92,6 +95,10 @@ void TetrisManager::move(bool direction) {
 	}
 }
 void TetrisManager::rotate(bool direction) {
+	if (objs[_count - 1]->__live == false) {
+		return;
+	}
+	checkGrounded();
 	if(Grounded == false)
 		objs[_count - 1]->rotate(direction);
 }
