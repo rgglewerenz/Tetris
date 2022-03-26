@@ -10,7 +10,6 @@ public:
 		Blocks.push_back(Block(0, y + size*1, size, 0));
 		Blocks.push_back(Block(0, y + size*0, size, 0));
 		Blocks.push_back(Block(__size, y, size, 0));
-	
 		for (Block i : Blocks) {
 			if (grid->getItem((i.getX() + __x) / __size, (i.getY() + __y) / __size) != -1) {
 				__placementWorked = false;

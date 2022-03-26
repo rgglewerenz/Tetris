@@ -7,6 +7,10 @@ void TBlock::rotate(bool directon) {
 	{
 	case 0:
 	{
+		if (__y / __size >= __maxY - 1) {
+			placeXY(false);
+			__y -= __size;
+		}
 		if (__xR / __size < __maxX && __xL / __size > 0) {
 			placeXY(false);
 			__xL -= __size;
@@ -187,6 +191,11 @@ void TBlock::rotate(bool directon) {
 	}
 	case 1:
 	{
+
+		if (__y / __size >= __maxY - 1) {
+			placeXY(false);
+			__y-= __size;
+		}
 		if (__xR / __size < __maxX && __xL / __size >= 0) {
 			placeXY(false);
 			__xR -= __size;
@@ -361,6 +370,10 @@ void TBlock::rotate(bool directon) {
 	}
 	case 2:
 	{
+		if (__y / __size == 0) {
+			placeXY(false);
+			__y += __size;
+		}
 		if (__xR / __size < __maxX - 1 && __xL / __size >= 0) {
 			placeXY(false);
 			__xR += __size;
@@ -480,9 +493,9 @@ void TBlock::rotate(bool directon) {
 		}
 		else {
 			placeXY(false);
-			__x += __size;
-			__xR += __size;
-			__xL += __size;
+			__x -= __size;
+			__xR -= __size;
+			__xL -= __size;
 			__xR += __size;
 			Blocks[0].setX(0);
 			Blocks[0].setY(0);
@@ -541,6 +554,11 @@ void TBlock::rotate(bool directon) {
 	}
 	case 3:
 	{
+		if (__y / __size >= __maxY - 1) {
+			system("pause");
+			placeXY(false);
+			__y += __size;
+		}
 		if (__xR / __size < __maxX && __xL / __size >= 0) {
 			placeXY(false);
 			__xL += __size;
