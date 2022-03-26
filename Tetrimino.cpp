@@ -16,11 +16,11 @@ void Tetrimino::moveUp() {
 */
 void Tetrimino::update(int time) {
 	int lowest_pt = 0;
-	if (time % 120 != 0)
-		return;
 	if (__live) {
 		int py = __y;
-		moveDown();
+		if (time % 100 == 0) {
+			moveDown();
+		}
 		bool worked = true;
 		for (Block i : Blocks) {
 			if (i.getY() > lowest_pt)
@@ -181,22 +181,23 @@ void Tetrimino::removeBlock(int id) {
 		return;
 	}
 	int b = 0;
-	int newY = 0;
+	int newY = -3;
 	for (Block m : Blocks) {
 		if (m.__id__ == id) {
+			cout << "Id = " << id << " b = " << b << " Len = " << Blocks.size() << endl;
 			Blocks.erase(Blocks.begin() + b);
 			grid->placeItem((m.getX() + __x)/__size,(m.getY() + __y)/__size,-1,-1);
 			newY = m.getY();
 		}
 		b++;
 	}
-	if (newY == 0)
+	if (newY == -3)
 		return ;
 	for (Block m : Blocks) {
 		grid->placeItem((m.getX() + __x) / __size, (m.getY() + __y) / __size, -1, -1);
 	}
 	for (Block& m : Blocks) {
-		if (newY != 0 && m.getY() < newY) {
+		if (newY != -3 && m.getY() < newY) {
 			cout << "Tetrimino = " << __index << "Block = " << m.__id__ << " :: new Y = " << m.getY() + __size << ", Old Y = " << m.getY() << endl;
 			m.setY(m.getY() + __size);
 		}

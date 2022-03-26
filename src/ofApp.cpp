@@ -88,7 +88,8 @@ void ofApp::update(){
 				mciSendStringW(item.c_str(), NULL, 0, NULL);
 			}
 	}
-	test.CreatePiece(2);
+	test.CreatePiece(rand()%2  + 1);
+	randomize++;
 	//grid.printGridT();
 	time++;
 }

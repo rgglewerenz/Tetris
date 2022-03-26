@@ -26,7 +26,6 @@ void TBlock::rotate(bool directon) {
 			Blocks[0].setX(0);
 			Blocks[0].setY(1 * __size);
 			if (checkOverlap(grid) || __y / __size > __maxY - 1) {
-				system("pause");
 				if (checkOverlap(grid)) {
 					Blocks[0].setX(0);
 					Blocks[0].setY(-1*__size);
@@ -555,7 +554,6 @@ void TBlock::rotate(bool directon) {
 	case 3:
 	{
 		if (__y / __size >= __maxY - 1) {
-			system("pause");
 			placeXY(false);
 			__y += __size;
 		}
