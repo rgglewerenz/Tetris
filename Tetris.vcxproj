@@ -100,7 +100,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\rlewerenz\source\WinGuiGames\of_v0.11.2_vs2017_release\apps\myApps\Tetris;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
@@ -184,6 +184,8 @@
     <ClCompile Include="GridT.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineBlock.cpp" />
+    <ClCompile Include="LPiece1.cpp" />
+    <ClCompile Include="LPiece2.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="TBlock.cpp" />
@@ -195,6 +197,8 @@
     <ClInclude Include="Block.h" />
     <ClInclude Include="GridT.h" />
     <ClInclude Include="LineBlock.h" />
+    <ClInclude Include="LPiece1.h" />
+    <ClInclude Include="LPiece2.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="TBlock.h" />
     <ClInclude Include="Tetrimino.h" />

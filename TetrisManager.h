@@ -4,6 +4,8 @@
 #include "Tetrimino.h"
 #include "LineBlock.h"
 #include "TBlock.h"
+#include "LPiece1.h"
+#include "LPiece2.h"
 class TetrisManager
 {
 public:

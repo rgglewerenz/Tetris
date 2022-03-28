@@ -6,6 +6,8 @@ void TetrisManager::__init__() {
 void TetrisManager::CreatePiece(int type) {
 	LineBlock* __pt;
 	TBlock* __ptB;
+	LPiece1* __ptL;
+	LPiece2* __ptL2;
 	if (Grounded == true) {
 		Grounded = false;
 		switch (type) {
@@ -36,6 +38,38 @@ void TetrisManager::CreatePiece(int type) {
 				__ptB = new TBlock(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
 			}
 			objs.push_back(__ptB);
+			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
+			if (objs[_count]->__placementWorked == false) {
+				gameOver = true;
+				objs.erase(objs.begin() + _count);
+				_count--;
+			}
+		case 3:
+			cout << "Count = " << _count << endl;
+			if (_count != 0) {
+				__ptL = new LPiece1(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			else
+			{
+				__ptL = new LPiece1(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			objs.push_back(__ptL);
+			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
+			if (objs[_count]->__placementWorked == false) {
+				gameOver = true;
+				objs.erase(objs.begin() + _count);
+				_count--;
+			}
+		case 4:
+			cout << "Count = " << _count << endl;
+			if (_count != 0) {
+				__ptL2 = new LPiece2(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			else
+			{
+				__ptL2 = new LPiece2(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			objs.push_back(__ptL2);
 			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
 			if (objs[_count]->__placementWorked == false) {
 				gameOver = true;

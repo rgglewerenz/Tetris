@@ -9,16 +9,48 @@
     </ClCompile>
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Block.cpp" />
-    <ClCompile Include="LineBlock.cpp" />
     <ClCompile Include="tetremino.cpp" />
-    <ClCompile Include="Tetrimino.cpp" />
     <ClCompile Include="GridT.cpp" />
-    <ClCompile Include="TetrisManager.cpp" />
-    <ClCompile Include="TBlock.cpp" />
+    <ClCompile Include="TetrisManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="LineBlock.cpp">
+      <Filter>src\Blocks\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="LPiece1.cpp">
+      <Filter>src\Blocks\LP1</Filter>
+    </ClCompile>
+    <ClCompile Include="LPiece2.cpp">
+      <Filter>src\Blocks\LP2</Filter>
+    </ClCompile>
+    <ClCompile Include="TBlock.cpp">
+      <Filter>src\Blocks\TBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="Tetrimino.cpp">
+      <Filter>src\Blocks\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks">
+      <UniqueIdentifier>{db003911-e2a5-4ad7-bdce-bcf43051bbdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks\Line">
+      <UniqueIdentifier>{b9d07a17-935e-469b-8ce9-877533bdcd6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks\LP1">
+      <UniqueIdentifier>{5b283b55-dd99-4df3-982a-79648a71cf91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks\LP2">
+      <UniqueIdentifier>{252a2bb7-684b-42c9-8041-11c9b07a39dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks\TBlock">
+      <UniqueIdentifier>{0b4ed626-5256-48b6-92bc-597adfdcbbc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks\Base">
+      <UniqueIdentifier>{cbfe583f-0723-4cfc-b2dc-dcb242d7d7d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,10 +59,24 @@
     </ClInclude>
     <ClInclude Include="Block.h" />
     <ClInclude Include="GridT.h" />
-    <ClInclude Include="LineBlock.h" />
-    <ClInclude Include="Tetrimino.h" />
-    <ClInclude Include="TetrisManager.h" />
-    <ClInclude Include="TBlock.h" />
+    <ClInclude Include="TetrisManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="LineBlock.h">
+      <Filter>src\Blocks\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="LPiece1.h">
+      <Filter>src\Blocks\LP1</Filter>
+    </ClInclude>
+    <ClInclude Include="LPiece2.h">
+      <Filter>src\Blocks\LP2</Filter>
+    </ClInclude>
+    <ClInclude Include="TBlock.h">
+      <Filter>src\Blocks\TBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="Tetrimino.h">
+      <Filter>src\Blocks\Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -36,12 +36,14 @@ void ofApp::setup(){
 				wprintf(L"The file in question is %s\n\n", file);
 				system("pause");
 				system("exit");
+				return;
 			}
 			else if (error == 275) {
 				cout << "Please make sure that the directory, and file names are correct.\nThe directory should end with a / and the file should end with a .mp3 " << endl;
 				wprintf(L"The file in question is %s\n\n", file);
 				system("pause");
 				system("exit");
+				return;
 				
 			}
 			else
@@ -50,6 +52,7 @@ void ofApp::setup(){
 				wprintf(L"The file in question is %s\n\n", file);
 				system("pause");
 				system("exit");
+				return ;
 			}
 		}
 		i++;
@@ -88,7 +91,8 @@ void ofApp::update(){
 				mciSendStringW(item.c_str(), NULL, 0, NULL);
 			}
 	}
-	test.CreatePiece(rand()%2  + 1);
+	test.CreatePiece(4);
+	//test.CreatePiece(rand()%2  + 1);
 	randomize++;
 	//grid.printGridT();
 	time++;
