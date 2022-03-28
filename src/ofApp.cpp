@@ -95,7 +95,7 @@ void ofApp::update(){
 			}
 	}
 
-	test.CreatePiece(4 + 1);
+	test.CreatePiece(5);
 	//test.CreatePiece(rand()%2  + 1);
 	randomize++;
 	//grid.printGridT();
