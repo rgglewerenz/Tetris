@@ -18,7 +18,7 @@ void Tetrimino::update(int time) {
 	int lowest_pt = 0;
 	if (__live) {
 		int py = __y;
-		if (time % 100 == 0) {
+		if (time % 30 == 0) {
 			moveDown();
 		}
 		bool worked = true;
@@ -26,7 +26,7 @@ void Tetrimino::update(int time) {
 			if (i.getY() > lowest_pt)
 				lowest_pt = i.getY();
 		}
-		cout << "Overlap = " << checkOverlap(grid) << endl;
+		//cout << "Overlap = " << checkOverlap(grid) << endl;
 		if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - __num__) {
 			worked = false;
 		}
@@ -73,14 +73,14 @@ Block Tetrimino::getBlock(int index) {
 *  gets the leftmost block x cord that it occupies
 */
 int Tetrimino::getXL() {
-	cout <<  "XL from get X = " << __xL << endl;
+	//cout <<  "XL from get X = " << __xL << endl;
 	return __xL;
 }
 /*
 * gets the rightmost block x cord that it occupies
 */
 int Tetrimino::getXR() {
-	cout << "XR from get X = " << __xR << endl;
+	//cout << "XR from get X = " << __xR << endl;
 	return __xR;
 }
 /*
@@ -140,7 +140,7 @@ void Tetrimino::move(bool direction) {
 		__x -= __speed * __size;
 		__xL -= __speed * __size;
 		__xR -= __speed * __size;
-		cout << "New X value added = " << __x << endl;
+		//cout << "New X value added = " << __x << endl;
 	}
 	if (checkOverlap(grid) || (__y + lowest_pt) / __size >= __maxY - __num__) {
 		worked = false;
@@ -184,7 +184,7 @@ void Tetrimino::removeBlock(int id) {
 	int newY = -3;
 	for (Block m : Blocks) {
 		if (m.__id__ == id) {
-			cout << "Id = " << id << " b = " << b << " Len = " << Blocks.size() << endl;
+			//cout << "Id = " << id << " b = " << b << " Len = " << Blocks.size() << endl;
 			Blocks.erase(Blocks.begin() + b);
 			grid->placeItem((m.getX() + __x)/__size,(m.getY() + __y)/__size,-1,-1);
 			newY = m.getY();
@@ -198,7 +198,7 @@ void Tetrimino::removeBlock(int id) {
 	}
 	for (Block& m : Blocks) {
 		if (newY != -3 && m.getY() < newY) {
-			cout << "Tetrimino = " << __index << "Block = " << m.__id__ << " :: new Y = " << m.getY() + __size << ", Old Y = " << m.getY() << endl;
+			//cout << "Tetrimino = " << __index << "Block = " << m.__id__ << " :: new Y = " << m.getY() + __size << ", Old Y = " << m.getY() << endl;
 			m.setY(m.getY() + __size);
 		}
 	}

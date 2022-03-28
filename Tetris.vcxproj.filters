@@ -29,6 +29,9 @@
     <ClCompile Include="Tetrimino.cpp">
       <Filter>src\Blocks\Base</Filter>
     </ClCompile>
+    <ClCompile Include="ZBlock1.cpp">
+      <Filter>src\Blocks\ZBlock1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -51,6 +54,9 @@
     </Filter>
     <Filter Include="src\Blocks\Base">
       <UniqueIdentifier>{cbfe583f-0723-4cfc-b2dc-dcb242d7d7d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks\ZBlock1">
+      <UniqueIdentifier>{69f66495-d377-4e26-a354-29095b46df1e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="Tetrimino.h">
       <Filter>src\Blocks\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ZBlock1.h">
+      <Filter>src\Blocks\ZBlock1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

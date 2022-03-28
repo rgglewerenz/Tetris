@@ -8,17 +8,18 @@ void TetrisManager::CreatePiece(int type) {
 	TBlock* __ptB;
 	LPiece1* __ptL;
 	LPiece2* __ptL2;
+	ZBlock1* __ptZ1;
 	if (Grounded == true) {
 		Grounded = false;
 		switch (type) {
-		case 1:
-			cout <<  "Count = " << _count << endl;
+		case 1: {
+			cout << "Count = " << _count << endl;
 			if (_count != 0) {
-				__pt = new LineBlock(_size, objs[_count-1]->__x/_size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+				__pt = new LineBlock(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
 			}
 			else
 			{
-				__pt = new LineBlock(_size, _maxX/_size/2 , 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+				__pt = new LineBlock(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
 			}
 			objs.push_back(__pt);
 			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
@@ -27,8 +28,10 @@ void TetrisManager::CreatePiece(int type) {
 				objs.erase(objs.begin() + _count);
 				_count--;
 			}
+			_count++;
 			break;
-		case 2:
+		}
+		case 2: {
 			cout << "Count = " << _count << endl;
 			if (_count != 0) {
 				__ptB = new TBlock(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
@@ -44,7 +47,10 @@ void TetrisManager::CreatePiece(int type) {
 				objs.erase(objs.begin() + _count);
 				_count--;
 			}
-		case 3:
+			_count++;
+			break;
+		}
+		case 3: {
 			cout << "Count = " << _count << endl;
 			if (_count != 0) {
 				__ptL = new LPiece1(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
@@ -60,7 +66,10 @@ void TetrisManager::CreatePiece(int type) {
 				objs.erase(objs.begin() + _count);
 				_count--;
 			}
-		case 4:
+			_count++;
+			break;
+		}
+		case 4: {
 			cout << "Count = " << _count << endl;
 			if (_count != 0) {
 				__ptL2 = new LPiece2(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
@@ -76,8 +85,29 @@ void TetrisManager::CreatePiece(int type) {
 				objs.erase(objs.begin() + _count);
 				_count--;
 			}
+			_count++;
+			break;
 		}
-		_count++;
+		case 5: {
+			cout << "Count = " << _count << endl;
+			if (_count != 0) {
+				__ptZ1 = new ZBlock1(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			else
+			{
+				__ptZ1 = new ZBlock1(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			objs.push_back(__ptZ1);
+			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
+			if (objs[_count]->__placementWorked == false) {
+				gameOver = true;
+				objs.erase(objs.begin() + _count);
+				_count--;
+			}
+			_count++;
+			break;
+		}
+		}
 	}
 }
 void TetrisManager::update(int time) {

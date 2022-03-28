@@ -21,8 +21,9 @@ void GridT::resetGrid() {
 	}
 }
 int GridT::getItem(int x, int y) {
-	//cout << "X = " << x << " , Y = " << y << endl;
+	cout << "X = " << x << " , Y = " << y << endl;
 	return gridObj[y][x][0];
+
 }
 int GridT::getId(int x, int y) {
 	return gridObj[y][x][1];
@@ -41,7 +42,7 @@ bool GridT::checkRow(int row) {
 	return false;
 }
 void GridT::placeItem(int x, int y, int value, int id) {
-	//cout << "X = " << x << " , Y = " << y << endl;
+	cout << "X = " << x << " , Y = " << y << endl;
 	vector<int> temp = {value,id};
 	gridObj[y][x] = temp;
 }

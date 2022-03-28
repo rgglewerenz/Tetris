@@ -1,12 +1,11 @@
 #pragma once
 #include "Tetrimino.h"
-class LPiece2 :
+class ZBlock1 :
     public Tetrimino
 {
 public:
-	LPiece2(int size, int x, int y, int speed, int maxX, int maxY, ofImage* image = nullptr, int index = 0, GridT* grid = nullptr, int num = 0) {
-		__init__(size, x * size, y * size, speed, maxX, maxY, image, index, grid, num, (x * size) - size, (x * size));
-		__y += __size;
+	ZBlock1(int size, int x, int y, int speed, int maxX, int maxY, ofImage* image = nullptr, int index = 0, GridT* grid = nullptr, int num = 0) {
+		__init__(size, x * size, y * size, speed, maxX, maxY, image, index, grid, num, (x * size) - size, (x * size) + size);
 		__y += __size;
 		if (__xR / __size >= __maxX - 1) {
 			__x -= __size;
@@ -19,9 +18,9 @@ public:
 			__xL += __size;
 		}
 		Blocks.push_back(Block(0, 0, size, 0));
-		Blocks.push_back(Block(0, y + size * -1, size, 1));
+		Blocks.push_back(Block(-__size, y + 0, size, 1));
 		Blocks.push_back(Block(0, y + size * 1, size, 2));
-		Blocks.push_back(Block(-__size, y + __size, size, 3));
+		Blocks.push_back(Block(__size, y + __size, size, 3));
 		for (Block i : Blocks) {
 			if (grid->getItem((i.getX() + __x) / __size, (i.getY() + __y) / __size) != -1) {
 				__placementWorked = false;

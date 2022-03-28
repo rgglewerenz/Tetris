@@ -79,6 +79,9 @@ void ofApp::update(){
 			noise = true;
 			test.eraseRow(i);
 		}
+		if (test.Grounded == false) {
+			break;
+		}
 	}
 	if (noise && sound) {
 		if (timesWon > 0) {
@@ -91,7 +94,8 @@ void ofApp::update(){
 				mciSendStringW(item.c_str(), NULL, 0, NULL);
 			}
 	}
-	test.CreatePiece(4);
+
+	test.CreatePiece(4 + 1);
 	//test.CreatePiece(rand()%2  + 1);
 	randomize++;
 	//grid.printGridT();
