@@ -186,6 +186,7 @@
     <ClCompile Include="LineBlock.cpp" />
     <ClCompile Include="LPiece1.cpp" />
     <ClCompile Include="LPiece2.cpp" />
+    <ClCompile Include="SquareBlock.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="TBlock.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="Tetrimino.cpp" />
     <ClCompile Include="TetrisManager.cpp" />
     <ClCompile Include="ZBlock1.cpp" />
+    <ClCompile Include="ZBlock2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h" />
@@ -200,11 +202,13 @@
     <ClInclude Include="LineBlock.h" />
     <ClInclude Include="LPiece1.h" />
     <ClInclude Include="LPiece2.h" />
+    <ClInclude Include="SquareBlock.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="TBlock.h" />
     <ClInclude Include="Tetrimino.h" />
     <ClInclude Include="TetrisManager.h" />
     <ClInclude Include="ZBlock1.h" />
+    <ClInclude Include="ZBlock2.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

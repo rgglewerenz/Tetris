@@ -7,6 +7,8 @@
 #include "LPiece1.h"
 #include "LPiece2.h"
 #include "ZBlock1.h"
+#include "ZBlock2.h"
+#include "SquareBlock.h"
 class TetrisManager
 {
 public:

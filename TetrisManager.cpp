@@ -9,6 +9,8 @@ void TetrisManager::CreatePiece(int type) {
 	LPiece1* __ptL;
 	LPiece2* __ptL2;
 	ZBlock1* __ptZ1;
+	ZBlock2* __ptZ2;
+	SquareBlock* __ptBL;
 	if (Grounded == true) {
 		Grounded = false;
 		switch (type) {
@@ -98,6 +100,44 @@ void TetrisManager::CreatePiece(int type) {
 				__ptZ1 = new ZBlock1(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
 			}
 			objs.push_back(__ptZ1);
+			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
+			if (objs[_count]->__placementWorked == false) {
+				gameOver = true;
+				objs.erase(objs.begin() + _count);
+				_count--;
+			}
+			_count++;
+			break;
+		}
+		case 6: {
+			cout << "Count = " << _count << endl;
+			if (_count != 0) {
+				__ptZ2 = new ZBlock2(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			else
+			{
+				__ptZ2 = new ZBlock2(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			objs.push_back(__ptZ2);
+			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
+			if (objs[_count]->__placementWorked == false) {
+				gameOver = true;
+				objs.erase(objs.begin() + _count);
+				_count--;
+			}
+			_count++;
+			break;
+		}
+		case 7: {
+			cout << "Count = " << _count << endl;
+			if (_count != 0) {
+				__ptBL = new SquareBlock(_size, objs[_count - 1]->__x / _size, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			else
+			{
+				__ptBL = new SquareBlock(_size, _maxX / _size / 2, 0, _speed, _maxX, _maxY, _images[_count % 6], _count, _grid, _num / 16);
+			}
+			objs.push_back(__ptBL);
 			cout << "Placement worked val = " << objs[_count]->__placementWorked << endl;
 			if (objs[_count]->__placementWorked == false) {
 				gameOver = true;

@@ -32,6 +32,12 @@
     <ClCompile Include="ZBlock1.cpp">
       <Filter>src\Blocks\ZBlock1</Filter>
     </ClCompile>
+    <ClCompile Include="ZBlock2.cpp">
+      <Filter>src\Blocks\ZBLock2</Filter>
+    </ClCompile>
+    <ClCompile Include="SquareBlock.cpp">
+      <Filter>src\Blocks\SquareBlock</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -57,6 +63,12 @@
     </Filter>
     <Filter Include="src\Blocks\ZBlock1">
       <UniqueIdentifier>{69f66495-d377-4e26-a354-29095b46df1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks\ZBLock2">
+      <UniqueIdentifier>{84823cc0-9892-48c4-8807-e32bc6e68346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blocks\SquareBlock">
+      <UniqueIdentifier>{c824a1de-10dc-4ac6-9562-47cf6f9d1906}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="ZBlock1.h">
       <Filter>src\Blocks\ZBlock1</Filter>
+    </ClInclude>
+    <ClInclude Include="ZBlock2.h">
+      <Filter>src\Blocks\ZBLock2</Filter>
+    </ClInclude>
+    <ClInclude Include="SquareBlock.h">
+      <Filter>src\Blocks\SquareBlock</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
