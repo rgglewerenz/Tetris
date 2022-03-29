@@ -22,7 +22,7 @@ void Printer::print(string prompt) {
 		}
 		cout << b << endl;
 		ofImage* temp = dict.getItem(b);
-		temp->draw(10,10);
+		temp->draw(i*35,10);
 		i++;
 	}
 }

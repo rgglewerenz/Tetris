@@ -61,6 +61,7 @@ void ofApp::setup(){
 	if(sound)
 		mciSendStringW(item.c_str(), NULL, 0, NULL);
 	printingObj.init();
+	printingObj.print("Hello");
 }
 
 //--------------------------------------------------------------
@@ -121,8 +122,6 @@ void ofApp::draw(){
 	ofDrawLine(int(ScreenX*3 / 4), 0, int(ScreenX*3 / 4), ScreenY - bottom*size);
 	ofDrawLine(int(ScreenX / 4), ScreenY - bottom * size, int(ScreenX*3 / 4), ScreenY - bottom * size);
 	test.draw();
-	cout << "Here" << endl;
-	printingObj.print("Hello");
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
