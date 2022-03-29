@@ -38,6 +38,8 @@
     <ClCompile Include="SquareBlock.cpp">
       <Filter>src\Blocks\SquareBlock</Filter>
     </ClCompile>
+    <ClCompile Include="Printer.cpp" />
+    <ClCompile Include="ImageDict.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -104,6 +106,8 @@
     <ClInclude Include="SquareBlock.h">
       <Filter>src\Blocks\SquareBlock</Filter>
     </ClInclude>
+    <ClInclude Include="Printer.h" />
+    <ClInclude Include="ImageDict.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

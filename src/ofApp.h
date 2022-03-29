@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "TetrisManager.h"
 #include "GridT.h"
+#include "Printer.h"
 #include <Windows.h>
 #pragma comment(lib, "Winmm.lib")
 class ofApp : public ofBaseApp{
@@ -26,6 +27,7 @@ class ofApp : public ofBaseApp{
 		ofImage Red;
 		ofImage Orange;
 		ofImage Purple;
+		Printer printingObj;
 		vector<ofImage*> images = {&Yellow,&Green,&Blue,&Red,&Orange,&Purple};
 		TetrisManager test = TetrisManager(size,speed,ScreenX/2,ScreenY,images,&grid,num);
 		const wstring MUSICSOURCE = L"Sound.mp3";
@@ -43,6 +45,7 @@ class ofApp : public ofBaseApp{
 		bool rDown = false;
 		bool sDown = false;
 		bool sound = true;
+		bool Over = false;
 		int timesWon = 0;
 		int timesDropped = 0;
 		int randomize = 0;

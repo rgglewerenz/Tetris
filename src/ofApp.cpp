@@ -60,10 +60,13 @@ void ofApp::setup(){
 	wstring item = L"play " + names[0] + L" repeat";
 	if(sound)
 		mciSendStringW(item.c_str(), NULL, 0, NULL);
+	printingObj.init();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	if (Over)
+		return ;
 	bool noise = false;
 	//cout << "Testing bool = "  << test.gameOverBool() << endl;
 	if (test.gameOverBool()) {
@@ -103,6 +106,7 @@ void ofApp::update(){
 }
 //--------------------------------------------------------------
 void ofApp::gameOver() {
+	Over = true;
 	drawGameOver();
 	test.reset();
 	grid.resetGrid();
@@ -117,6 +121,8 @@ void ofApp::draw(){
 	ofDrawLine(int(ScreenX*3 / 4), 0, int(ScreenX*3 / 4), ScreenY - bottom*size);
 	ofDrawLine(int(ScreenX / 4), ScreenY - bottom * size, int(ScreenX*3 / 4), ScreenY - bottom * size);
 	test.draw();
+	cout << "Here" << endl;
+	printingObj.print("Hello");
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -147,6 +153,9 @@ void ofApp::keyPressed(int key){
 			}
 		}
 		sDown = true;
+	}
+	if (key == ' ' && Over == true) {
+		Over = false;
 	}
 }
 

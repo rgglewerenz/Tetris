@@ -21,7 +21,7 @@ void GridT::resetGrid() {
 	}
 }
 int GridT::getItem(int x, int y) {
-	cout << "X = " << x << " , Y = " << y << endl;
+	//cout << "X = " << x << " , Y = " << y << endl;
 	return gridObj[y][x][0];
 
 }

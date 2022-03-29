@@ -182,10 +182,12 @@
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="GridT.cpp" />
+    <ClCompile Include="ImageDict.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineBlock.cpp" />
     <ClCompile Include="LPiece1.cpp" />
     <ClCompile Include="LPiece2.cpp" />
+    <ClCompile Include="Printer.cpp" />
     <ClCompile Include="SquareBlock.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
@@ -199,9 +201,11 @@
   <ItemGroup>
     <ClInclude Include="Block.h" />
     <ClInclude Include="GridT.h" />
+    <ClInclude Include="ImageDict.h" />
     <ClInclude Include="LineBlock.h" />
     <ClInclude Include="LPiece1.h" />
     <ClInclude Include="LPiece2.h" />
+    <ClInclude Include="Printer.h" />
     <ClInclude Include="SquareBlock.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="TBlock.h" />
