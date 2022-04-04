@@ -1,7 +1,7 @@
 #include "Printer.h"
 void Printer::init() 
 {
-	dict.init(30);
+	dict.init(__size);
 }
 void Printer::print(string prompt, int X, int Y) {
 	int i = 0;
@@ -20,7 +20,7 @@ void Printer::print(string prompt, int X, int Y) {
 		}
 		cout << b << endl;
 		ofImage* temp = dict.getItem(b);
-		temp->draw(i*X,Y);
+		temp->draw(i*(__size + 5) + X, Y);
 		i++;
 	}
 }

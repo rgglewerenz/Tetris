@@ -139,7 +139,7 @@ void ofApp::draw(){
 		test.draw();
 	}
 	cout << "Score is " + to_string(scoreObj.getScore()) << endl;
-	printingObj.print("Score is " + to_string(scoreObj.getScore()));
+	printingObj.print("Score is " + to_string(scoreObj.getScore()), 0, 25);
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){

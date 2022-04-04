@@ -10,5 +10,6 @@ public:
 	void print(string prompt, int X, int Y);
 private:
 	ImageDict dict;
+	int __size = 20;
 };
 

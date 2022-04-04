@@ -2,9 +2,9 @@
 ofImage* ImageDict::getItem(char id) {
 	int i = 0;
 	for (char b : letter) {
-		cout << b << " is not equal to " << id << endl;
+		//cout << b << " is not equal to " << id << endl;
 		if (b == id) {
-			cout << b << " in func" << endl;
+			//cout << b << " in func" << endl;
 			return  &images[i];
 		}
 		i++;
