@@ -3,13 +3,11 @@ void Printer::init()
 {
 	dict.init(30);
 }
-void Printer::print(string prompt) {
-	cout << "**Printing**" << endl;
+void Printer::print(string prompt, int X, int Y) {
 	int i = 0;
-	cout << "**Printing**" << endl;
 	for (char b : prompt) {
 		cout << b << endl;
-		if (b < 48|| b  > 122) {
+		if ((b < 48|| b  > 122)&& b != 32) {
 			continue;
 		}
 		cout << b << endl;
@@ -17,12 +15,12 @@ void Printer::print(string prompt) {
 			i++;
 			continue;
 		}
-		if (b < 'a') {
+		if (b < 'a' && b >= 'A') {
 			b += 32;
 		}
 		cout << b << endl;
 		ofImage* temp = dict.getItem(b);
-		temp->draw(i*35,10);
+		temp->draw(i*X,Y);
 		i++;
 	}
 }

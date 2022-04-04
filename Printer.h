@@ -7,7 +7,7 @@ class Printer
 {
 public:
 	void init();
-	void print(string prompt);
+	void print(string prompt, int X, int Y);
 private:
 	ImageDict dict;
 };

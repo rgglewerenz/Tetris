@@ -183,16 +183,15 @@
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="GridT.cpp" />
     <ClCompile Include="ImageDict.cpp" />
-    <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineBlock.cpp" />
     <ClCompile Include="LPiece1.cpp" />
     <ClCompile Include="LPiece2.cpp" />
     <ClCompile Include="Printer.cpp" />
+    <ClCompile Include="ScoreKeeper.cpp" />
     <ClCompile Include="SquareBlock.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="TBlock.cpp" />
-    <ClCompile Include="tetremino.cpp" />
     <ClCompile Include="Tetrimino.cpp" />
     <ClCompile Include="TetrisManager.cpp" />
     <ClCompile Include="ZBlock1.cpp" />
@@ -206,6 +205,7 @@
     <ClInclude Include="LPiece1.h" />
     <ClInclude Include="LPiece2.h" />
     <ClInclude Include="Printer.h" />
+    <ClInclude Include="ScoreKeeper.h" />
     <ClInclude Include="SquareBlock.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="TBlock.h" />

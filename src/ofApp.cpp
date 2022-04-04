@@ -1,6 +1,7 @@
 #include "ofApp.h"
 #include <windows.h>
 #include <Mmsystem.h>
+#include <chrono>
 #pragma comment(lib, "Winmm.lib")
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -61,11 +62,13 @@ void ofApp::setup(){
 	if(sound)
 		mciSendStringW(item.c_str(), NULL, 0, NULL);
 	printingObj.init();
-	printingObj.print("Hello");
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	using chrono::milliseconds;
+	using chrono::system_clock;
+	using chrono::duration_cast;
 	if (Over)
 		return ;
 	bool noise = false;
@@ -75,17 +78,29 @@ void ofApp::update(){
 		gameOver();
 		return;
 	}
-	test.update(time);
+	if (start_time - duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count() < -16*30) {
+		cout << "Start Time = " << start_time << endl;
+		cout << "Now = " << duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count() << endl;
+		cout << "Diff = " << start_time - duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count() << endl;
+		//system("pause");
+		test.update(30);
+		start_time = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+	}
+	int count_rows = 0;
 	for (int i = 0; i < ScreenY / size; i++) {
 		bool testVar = grid.checkRow(i);
 		//cout << "Testing row  " << i << " Results are = " << testVar << endl;
 		if (testVar == true && test.Grounded == true) {
 			noise = true;
 			test.eraseRow(i);
+			count_rows++;
 		}
 		if (test.Grounded == false) {
 			break;
 		}
+	}
+	if (count_rows != 0) {
+		scoreObj.DistroyedRows(count_rows);
 	}
 	if (noise && sound) {
 		if (timesWon > 0) {
@@ -98,12 +113,10 @@ void ofApp::update(){
 				mciSendStringW(item.c_str(), NULL, 0, NULL);
 			}
 	}
-
 	test.CreatePiece(rand()%7 + 1);
 	//test.CreatePiece(rand()%2  + 1);
 	randomize++;
 	//grid.printGridT();
-	time++;
 }
 //--------------------------------------------------------------
 void ofApp::gameOver() {
@@ -111,6 +124,7 @@ void ofApp::gameOver() {
 	drawGameOver();
 	test.reset();
 	grid.resetGrid();
+	scoreObj.resetScore();
 }
 //--------------------------------------------------------------
 void ofApp::drawGameOver() {
@@ -118,10 +132,14 @@ void ofApp::drawGameOver() {
 }
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofDrawLine(int(ScreenX / 4), 0, int(ScreenX/ 4), ScreenY - bottom*size);
-	ofDrawLine(int(ScreenX*3 / 4), 0, int(ScreenX*3 / 4), ScreenY - bottom*size);
-	ofDrawLine(int(ScreenX / 4), ScreenY - bottom * size, int(ScreenX*3 / 4), ScreenY - bottom * size);
-	test.draw();
+	if (!Over) {
+		ofDrawLine(int(ScreenX / 4), 0, int(ScreenX / 4), ScreenY - bottom * size);
+		ofDrawLine(int(ScreenX * 3 / 4), 0, int(ScreenX * 3 / 4), ScreenY - bottom * size);
+		ofDrawLine(int(ScreenX / 4), ScreenY - bottom * size, int(ScreenX * 3 / 4), ScreenY - bottom * size);
+		test.draw();
+	}
+	cout << "Score is " + to_string(scoreObj.getScore()) << endl;
+	printingObj.print("Score is " + to_string(scoreObj.getScore()));
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){

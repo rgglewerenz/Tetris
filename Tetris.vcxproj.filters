@@ -7,13 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Line.cpp" />
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="tetremino.cpp" />
-    <ClCompile Include="GridT.cpp" />
-    <ClCompile Include="TetrisManager.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="LineBlock.cpp">
       <Filter>src\Blocks\Line</Filter>
     </ClCompile>
@@ -38,8 +31,24 @@
     <ClCompile Include="SquareBlock.cpp">
       <Filter>src\Blocks\SquareBlock</Filter>
     </ClCompile>
-    <ClCompile Include="Printer.cpp" />
-    <ClCompile Include="ImageDict.cpp" />
+    <ClCompile Include="Block.cpp">
+      <Filter>src\BaseBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageDict.cpp">
+      <Filter>src\Printer</Filter>
+    </ClCompile>
+    <ClCompile Include="Printer.cpp">
+      <Filter>src\Printer</Filter>
+    </ClCompile>
+    <ClCompile Include="GridT.cpp">
+      <Filter>src\GRID</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrisManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreKeeper.cpp">
+      <Filter>src\ScoreKeeper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -72,14 +81,24 @@
     <Filter Include="src\Blocks\SquareBlock">
       <UniqueIdentifier>{c824a1de-10dc-4ac6-9562-47cf6f9d1906}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\BaseBlock">
+      <UniqueIdentifier>{c53cf395-0adc-4a58-b00b-5e7609d23bbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Printer">
+      <UniqueIdentifier>{a7ca823d-1203-4bdc-b9b2-71b1814275b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GRID">
+      <UniqueIdentifier>{003ed02e-5ce3-4b95-ae8b-5fd84541d03f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Manager">
+      <UniqueIdentifier>{fd1decb0-7a44-4603-8974-55a137778638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ScoreKeeper">
+      <UniqueIdentifier>{8d430b67-baad-40cf-a136-a63efd70ae3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="GridT.h" />
-    <ClInclude Include="TetrisManager.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="LineBlock.h">
@@ -106,8 +125,24 @@
     <ClInclude Include="SquareBlock.h">
       <Filter>src\Blocks\SquareBlock</Filter>
     </ClInclude>
-    <ClInclude Include="Printer.h" />
-    <ClInclude Include="ImageDict.h" />
+    <ClInclude Include="Block.h">
+      <Filter>src\BaseBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageDict.h">
+      <Filter>src\Printer</Filter>
+    </ClInclude>
+    <ClInclude Include="Printer.h">
+      <Filter>src\Printer</Filter>
+    </ClInclude>
+    <ClInclude Include="GridT.h">
+      <Filter>src\GRID</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrisManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreKeeper.h">
+      <Filter>src\ScoreKeeper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "TetrisManager.h"
 #include "GridT.h"
+#include "ScoreKeeper.h"
 #include "Printer.h"
 #include <Windows.h>
 #pragma comment(lib, "Winmm.lib")
@@ -44,8 +45,10 @@ class ofApp : public ofBaseApp{
 		bool dDown = false;
 		bool rDown = false;
 		bool sDown = false;
-		bool sound = true;
+		bool sound = false;
 		bool Over = false;
+		time_t start_time;
+		ScoreKeeper scoreObj;
 		int timesWon = 0;
 		int timesDropped = 0;
 		int randomize = 0;
