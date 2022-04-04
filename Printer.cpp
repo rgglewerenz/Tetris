@@ -6,11 +6,11 @@ void Printer::init()
 void Printer::print(string prompt, int X, int Y) {
 	int i = 0;
 	for (char b : prompt) {
-		cout << b << endl;
+		//cout << b << endl;
 		if ((b < 48|| b  > 122)&& b != 32) {
 			continue;
 		}
-		cout << b << endl;
+		//cout << b << endl;
 		if (b == 32) {
 			i++;
 			continue;
@@ -18,7 +18,7 @@ void Printer::print(string prompt, int X, int Y) {
 		if (b < 'a' && b >= 'A') {
 			b += 32;
 		}
-		cout << b << endl;
+		//cout << b << endl;
 		ofImage* temp = dict.getItem(b);
 		temp->draw(i*(__size + 5) + X, Y);
 		i++;

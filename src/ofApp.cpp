@@ -89,7 +89,7 @@ void ofApp::update(){
 	int count_rows = 0;
 	for (int i = 0; i < ScreenY / size; i++) {
 		bool testVar = grid.checkRow(i);
-		//cout << "Testing row  " << i << " Results are = " << testVar << endl;
+		//[ << "Testing row  " << i << " Results are = " << testVar << endl;
 		if (testVar == true && test.Grounded == true) {
 			noise = true;
 			test.eraseRow(i);
@@ -124,11 +124,13 @@ void ofApp::gameOver() {
 	drawGameOver();
 	test.reset();
 	grid.resetGrid();
-	scoreObj.resetScore();
 }
 //--------------------------------------------------------------
 void ofApp::drawGameOver() {
-
+	printingObj.print("Game Over",ScreenX/2 - 20*4,ScreenY/2);
+	printingObj.print("If you want to play again", ScreenX / 2 - 25 * 13, ScreenY / 2 + 30);
+	printingObj.print("press spacebar", ScreenX / 2 - 25 * 7, ScreenY / 2 + 60);
+	printingObj.print("Final Score " + to_string(scoreObj.getScore()), ScreenX / 2 - 25 * 6, ScreenY / 2 + 90);
 }
 //--------------------------------------------------------------
 void ofApp::draw(){
@@ -137,9 +139,13 @@ void ofApp::draw(){
 		ofDrawLine(int(ScreenX * 3 / 4), 0, int(ScreenX * 3 / 4), ScreenY - bottom * size);
 		ofDrawLine(int(ScreenX / 4), ScreenY - bottom * size, int(ScreenX * 3 / 4), ScreenY - bottom * size);
 		test.draw();
+		printingObj.print("Score", 0, 0);
+		printingObj.print(to_string(scoreObj.getScore()), 0, 25);
 	}
-	cout << "Score is " + to_string(scoreObj.getScore()) << endl;
-	printingObj.print("Score is " + to_string(scoreObj.getScore()), 0, 25);
+	else {
+		drawGameOver();
+	}
+	
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -173,6 +179,7 @@ void ofApp::keyPressed(int key){
 	}
 	if (key == ' ' && Over == true) {
 		Over = false;
+		scoreObj.resetScore();
 	}
 }
 
