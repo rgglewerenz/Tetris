@@ -45,7 +45,7 @@ class ofApp : public ofBaseApp{
 		bool dDown = false;
 		bool rDown = false;
 		bool sDown = false;
-		bool sound = false;
+		bool sound = true;
 		bool Over = false;
 		time_t start_time;
 		ScoreKeeper scoreObj;
